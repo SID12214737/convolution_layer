@@ -71,8 +71,30 @@ public:
                             vector<vector<float>>(input_height + 2 * padding,
                             vector<float>(input_width + 2 * padding, 0.0f)));
             
+            for(int i = 0; i < inputChannels; ++i){
+                for (int ii = 0; ii < input_height; ++ii) {
+                    for (int iii = 0; iii < input_width; ++iii) {
+                        padded_input[i][ii + padding][iii + padding] = input[i][ii][iii];
+                    }
+                }
+            }
         } 
+        // Output dimensions
+        vector<vector<vector<float>>> output(outputChannels,
+                                             vector<vector<float>>(output_height,
+                                             vector<float>(output_width, 0.0f)));
+
+        // Perform Convolution
+        for (int oc = 0; oc <  outputChannels; ++oc) {
+            for (int oh = 0; oh < output_height; ++oh) {
+                for (int ow = 0; ow < output_width; ++ow) {
+                    value += apply_kernel(pa)
+                }
+            }
+        }
     }
+
+
 
 
 };
